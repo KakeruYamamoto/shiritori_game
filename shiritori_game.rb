@@ -1,9 +1,11 @@
 class ShiritoriGame
   attr_accessor :player_name
+  attr_accessor :histories
 
   def initialize(player_name:)
 
     @player_name = player_name
+    @histories = []
     # @player_name
   end
 
@@ -27,4 +29,14 @@ class ShiritoriGame
     "\\_o< Hi, #{@player_name}. Let's enjoy shiritori game\n"
   end
 
-end
+  def computer_attack(histories)
+    # binding.pry
+    last_word = histories[-1].split("").last
+    all_words = ShiritoriGame.all_words
+    shiritori_game_computer_attack = all_words.select{|x| x[0].include?(last_word)}
+    shiritori_game_computer_attack
+
+    end
+  end
+
+#ShiritoriGame.computer_attack
